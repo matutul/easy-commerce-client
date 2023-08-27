@@ -4,7 +4,8 @@ import heroImage from "../assets/image/heroImage/heroImage2.png";
 import { BsCartPlus } from "react-icons/bs";
 
 const Home = () => {
-  const products = useProducts().products;
+  const { state:{products}} = useProducts();
+
   return (
     <div className="w-full flex flex-col items-center bg-stone-50">
       {/* Hero section */}
@@ -23,12 +24,17 @@ const Home = () => {
               perferendis eveniet minus minima accusamus?
             </p>
             <button className="bg-gradient-to-r from-pink-600 to-violet-700 py-2 px-5 mt-8 rounded-md text-white hover:from-violet-700 hover:to-pink-600 flex items-center gap-3 group">
-              Order Now <BsCartPlus className="text-xl group-hover:translate-x-1 transition-all duration-200"/>
+              Order Now{" "}
+              <BsCartPlus className="text-xl group-hover:translate-x-1 transition-all duration-200" />
             </button>
           </div>
           {/* Hero image */}
           <div className=" float-right flex justify-center md:justify-end items-end">
-            <img src={heroImage} alt="" className="-mr-6 w-full h-auto max-w-[300px] md:max-w-[600px] object-contain" />
+            <img
+              src={heroImage}
+              alt=""
+              className="-mr-6 w-full h-auto max-w-[300px] md:max-w-[600px] object-contain"
+            />
           </div>
         </div>
       </div>

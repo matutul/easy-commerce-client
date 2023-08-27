@@ -1,13 +1,13 @@
 import { FaCartArrowDown, FaStar } from "react-icons/fa";
 import { RiPriceTag3Fill } from "react-icons/ri";
-import { Reducer } from "../state/productState/Reducer";
+// import { Reducer } from "../state/productState/Reducer";
 import { ActionType } from "../state/productState/ActionType";
 import { useProducts } from "../context/product/Poduct";
-import { useReducer } from "react";
+// import { useReducer } from "react";
 
 const ProductCard = ({ product }) => {
-  const initialState = useProducts();
-  const [state, dispatch] = useReducer(Reducer, initialState);
+  const { dispatch } = useProducts();
+  // const [state, dispatch] = useReducer(Reducer, initialState);
   return (
     <div className="w-full rounded-2xl bg-white drop-shadow-2xl group">
       {/* image div */}
@@ -45,8 +45,7 @@ const ProductCard = ({ product }) => {
         </div>
         <button
           className="bg-gradient-to-r from-rose-500 to-fuchsia-500 py-1 px-3 text-sm font-medium text-white hover:from-fuchsia-500 hover:to-rose-500 float-right rounded-l-full -mr-3 flex gap-2 items-center hover:pr-10 transition-all duration-200"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={() => {
             dispatch({
               type: ActionType.ADD_TO_CART,
               payload: product,

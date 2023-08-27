@@ -1,14 +1,21 @@
-import { createContext, useContext } from "react";
-import productData from "../../assets/data/MOCK_DATA.json";
+import { createContext, useContext, useReducer } from "react";
+// import productData from "../../assets/data/MOCK_DATA.json";
+import { InitialState, Reducer } from "../../state/productState/Reducer";
 
 const ProductContext = createContext();
 
 const Poduct = ({ children }) => {
+  const [state, dispatch] = useReducer(Reducer, InitialState);
+
+  // let value = {
+  //   products: productData,
+  //   cart: [],
+  //   error: false,
+  // };
   let value = {
-    products: productData,
-    cart: [],
-    error: false,
-  };
+    state,
+    dispatch,
+  }
   return (
     <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
   );

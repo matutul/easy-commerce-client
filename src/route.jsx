@@ -5,6 +5,7 @@ import TopRated from "./pages/TopRated";
 import Cart from "./pages/Cart";
 import Root from "./layout/Root";
 import Home from "./pages/Home";
+import WishList from "./pages/WishList";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: "top_rated",
         element: <TopRated />,
+      },
+      {
+        path: "wish_list",
+        element: <WishList />,
       },
       {
         path: "cart",

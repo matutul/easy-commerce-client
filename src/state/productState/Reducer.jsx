@@ -10,25 +10,29 @@ export const InitialState = {
 
 export const Reducer = (state, action) => {
   switch (action.type) {
+    // add to cart action
     case ActionType.ADD_TO_CART:
       return {
         ...state,
-        cart: [...state.cart, action.payload],
+        cart: [...state.cart, { product: action.payload, order_quantity: 1 }],
       };
+      // remove from cart action
     case ActionType.REMOVE_FROM_CART: {
-      const updatedCart = state.cart.filter((pd) => {
-        return pd.product_id !== action.payload;
+      const updatedCart = state.cart.filter((order) => {
+        return order.product.product_id !== action.payload;
       });
       return {
         ...state,
         cart: updatedCart,
       };
     }
+    // add to wishlist action
     case ActionType.ADD_TO_WISHLIST:
       return {
         ...state,
         wishList: [...state.wishList, action.payload],
       };
+    // remove from wishlist action
     case ActionType.REMOVE_FROM_WISHLIST: {
       const updatedWishList = state.wishList.filter((pd) => {
         return pd.product_id !== action.payload;
@@ -36,6 +40,38 @@ export const Reducer = (state, action) => {
       return {
         ...state,
         wishList: updatedWishList,
+      };
+    }
+    // order quantity increase action
+    case ActionType.INCREASE_QUANTITY: {
+      const updatedCart = state.cart;
+      for (let i = 0; i < updatedCart.length; i++) {
+        if (updatedCart[i].product.product_id == action.payload) {
+          updatedCart[i].order_quantity += 0.5;
+          break;
+        }
+      }
+      // console.log(updatedCart);
+      return {
+        ...state,
+        cart: [...updatedCart],
+      };
+    }
+    // order quantity decrease action
+    case ActionType.DECREASE_QUANTITY: {
+      const updatedCart = [...state.cart];
+      for (let i = 0; i < updatedCart.length; i++) {
+        if (updatedCart[i].product.product_id == action.payload) {
+          if (updatedCart[i].order_quantity > 1) {
+            updatedCart[i].order_quantity -= 0.5;
+          }
+          break;
+        }
+      }
+      // console.log(updatedCart);
+      return {
+        ...state,
+        cart: [...updatedCart],
       };
     }
     default:

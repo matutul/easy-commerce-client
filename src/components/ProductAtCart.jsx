@@ -1,39 +1,87 @@
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { useProducts } from "../context/product/Poduct";
 import { ActionType } from "../state/productState/ActionType";
+import { FaRegMoneyBillAlt, FaRegTimesCircle } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
-const ProductAtCart = ({ product }) => {
+const ProductAtCart = ({ product, order_quantity }) => {
   const { dispatch } = useProducts();
   return (
     <>
       {/* <div> */}
-      <div className="w-full flex justify-between items-center my-4 py-2 px-3 rounded-full bg-fuchsia-700">
-        <div className="w-[40%]">
-          <p className="text-white text-lg">{product.product_name}</p>
+      <div className="relative w-full flex justify-between items-center rounded-2xl bg-slate-200 overflow-hidden">
+        <div className="w-[calc(100%-55px)] p-3 flex items-center">
+          <div className="w-[40%] flex items-center">
+            <div className="h-fit">
+              <div className="w-[65px] h-[65px] flex justify-center items-center rounded-full bg-slate-500">
+                <img
+                  src={product.product_photo}
+                  className="object-cover"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div className="mx-2">
+              <p className="text-md">{product.product_name}</p>
+              <p className="text-sm">{product.category}</p>
+            </div>
+          </div>
+          <div className="w-[60%] flex items-center justify-end">
+            <div className="h-[35px] flex items-center m-2 rounded-lg">
+              <div className="h-full px-2 flex justify-center items-center bg-slate-600 rounded-l-lg">
+                <FaRegMoneyBillAlt className="text-lg text-white" />
+              </div>
+              <div className="h-full px-2 flex items-center gap-1 rounded-r-lg bg-slate-300">
+                <p className="text-lg">{product.price}</p>
+                <FaRegTimesCircle />
+                <p className="text-lg">{order_quantity}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex flex-col gap-3">
+                <button
+                  className="btn bg-gray-600 text-white p-2 w-fit h-fit rounded-md"
+                  onClick={() =>
+                    dispatch({
+                      type: ActionType.INCREASE_QUANTITY,
+                      payload: product.product_id,
+                    })
+                  }
+                >
+                  <FiPlus />
+                </button>
+                <button
+                  className="btn bg-gray-600 text-white p-2 w-fit h-fit rounded-md"
+                  onClick={() =>
+                    dispatch({
+                      type: ActionType.DECREASE_QUANTITY,
+                      payload: product.product_id,
+                    })
+                  }
+                >
+                  <FiMinus />
+                </button>
+              </div>
+            </div>
+            <div className="w-[150px] flex justify-center">
+              <p className="text-lg ml-4 w-fit">
+                {(product.price * order_quantity).toFixed(2)}
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="flex gap-4">
-          <button className="btn bg-amber-400 text-gray-900 px-2 rounded-full">
-            <FiMinus />
-          </button>
-          <button className="btn bg-amber-400 text-gray-900 px-2 rounded-full">
-            <FiPlus />
-          </button>
-          <button
-            className="py-1 px-2 rounded-full bg-red-500 text-white flex justify-center items-center gap-1"
-            onClick={() =>
-              dispatch({
-                type: ActionType.REMOVE_FROM_CART,
-                payload: product.product_id,
-              })
-            }
-          >
-            <AiFillCloseCircle /> Delete
-          </button>
-        </div>
-        <div>
-          <p className="text-white text-lg mr-4">{product.price}</p>
-        </div>
+        <button
+          className="w-[55px] h-full absolute right-0 py-1 px-2 bg-red-500 text-white flex justify-center items-center group"
+          onClick={() =>
+            dispatch({
+              type: ActionType.REMOVE_FROM_CART,
+              payload: product.product_id,
+            })
+          }
+        >
+          <AiOutlineDelete className="text-3xl group-hover:text-2xl transition-all duration-150" />
+        </button>
       </div>
       {/* </div> */}
     </>

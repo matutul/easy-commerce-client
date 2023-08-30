@@ -17,8 +17,8 @@ const ProductCard = ({ product }) => {
 
   useEffect(() => {
     if (
-      cart.find((pd) => {
-        return pd.product_id === product.product_id;
+      cart.find((order) => {
+        return order.product.product_id === product.product_id;
       })
     ) {
       setisAddedToCart(true);

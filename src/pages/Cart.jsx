@@ -20,11 +20,15 @@ const Cart = () => {
           <div className="col-span-8 flex flex-col gap-3">
             {cart &&
               cart.map((order) => (
-                <ProductAtCart key={order.product.product_id} product={order.product} order_quantity={order.order_quantity} />
+                <ProductAtCart
+                  key={order.product.product_id}
+                  product={order.product}
+                  order_quantity={order.order_quantity}
+                />
               ))}
           </div>
           <div className="col-span-4">
-            <p>this is checkout sectoin</p>
+            <div className="w-full"></div>
           </div>
         </div>
 

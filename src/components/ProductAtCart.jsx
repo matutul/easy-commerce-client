@@ -27,9 +27,9 @@ const ProductAtCart = ({ product, order_quantity }) => {
               <p className="text-sm">{product.category}</p>
             </div>
           </div>
-          <div className="w-[60%] flex items-center justify-end">
+          <div className="w-[60%] flex items-center justify-end gap-4">
             <div className="h-[35px] flex items-center m-2 rounded-lg">
-              <div className="h-full px-2 flex justify-center items-center bg-slate-600 rounded-l-lg">
+              <div className="h-full px-2 flex justify-center items-center bg-gray-400 rounded-l-lg">
                 <FaRegMoneyBillAlt className="text-lg text-white" />
               </div>
               <div className="h-full px-2 flex items-center gap-1 rounded-r-lg bg-slate-300">
@@ -41,7 +41,7 @@ const ProductAtCart = ({ product, order_quantity }) => {
             <div className="flex items-center gap-4">
               <div className="flex flex-col gap-3">
                 <button
-                  className="btn bg-gray-600 text-white p-2 w-fit h-fit rounded-md"
+                  className="btn bg-gray-400 text-white p-2 w-fit h-fit rounded-md"
                   onClick={() =>
                     dispatch({
                       type: ActionType.INCREASE_QUANTITY,
@@ -52,7 +52,7 @@ const ProductAtCart = ({ product, order_quantity }) => {
                   <FiPlus />
                 </button>
                 <button
-                  className="btn bg-gray-600 text-white p-2 w-fit h-fit rounded-md"
+                  className="btn bg-gray-400 text-white p-2 w-fit h-fit rounded-md"
                   onClick={() =>
                     dispatch({
                       type: ActionType.DECREASE_QUANTITY,
@@ -64,7 +64,7 @@ const ProductAtCart = ({ product, order_quantity }) => {
                 </button>
               </div>
             </div>
-            <div className="w-[150px] flex justify-center">
+            <div className="w-[100px] flex justify-center">
               <p className="text-lg ml-4 w-fit">
                 {(product.price * order_quantity).toFixed(2)}
               </p>

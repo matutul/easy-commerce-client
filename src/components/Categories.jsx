@@ -3,7 +3,7 @@ import { categoryMenu } from "../assets/data/categories";
 
 const Categories = () => {
   return (
-    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+    <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
       {categoryMenu &&
         categoryMenu.map((category) => (
           <div className="w-full p-4 flex flex-col justify-center items-center rounded-lg bg-white drop-shadow-sm hover:drop-shadow-md cursor-default hover:scale-105 transition-all duration-150">

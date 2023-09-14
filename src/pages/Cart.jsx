@@ -15,12 +15,12 @@ const Cart = () => {
   } = useProducts();
 
   return (
-    <div className="w-full min-h-screen flex justify-center">
-      <div className="w-[80%] p-4 my-6 rounded-3xl">
+    <div className="w-full min-h-screen flex justify-center mt-[60px]">
+      <div className="w-full md:w-[95%] lg:w-[90%] xl:w-[80%] p-4 my-6 rounded-3xl">
         <p>Your cart:</p>
         {cart.length ? (
-          <div className="w-full grid grid-cols-1 sm:grid-cols-12 gap-4">
-            <div className="col-span-7 flex flex-col gap-3">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 lg:gap-2">
+            <div className="lg:col-span-7 flex flex-col gap-3 mb-2">
               {cart.map((order) => (
                 <ProductAtCart
                   key={order.product.product_id}
@@ -29,8 +29,8 @@ const Cart = () => {
                 />
               ))}
             </div>
-            <div className="col-span-5 pl-6 relative">
-              <div className="absolute w-[25px] h-fit p-3 top-20 left-0 rounded-l-2xl bg-rose-600 flex flex-col justify-center items-center">
+            <div className="col-span-5 relative">
+              {/* <div className="absolute w-[25px] h-fit p-3 top-20 -left-[25px] rounded-l-2xl bg-rose-600 flex flex-col justify-center items-center">
                 <div
                   className="w-[15px] h-[30px] rounded-full bg-gray-100 my-1 hover:scale-y-125 transition-all duration-200"
                   onClick={() => setCheckoutPage(<TotalPrice />)}
@@ -43,7 +43,7 @@ const Cart = () => {
                   className="w-[15px] h-[30px] rounded-full bg-gray-100 my-1 hover:scale-y-125 transition-all duration-200"
                   onClick={() => setCheckoutPage(<PaymentOption />)}
                 ></div>
-              </div>
+              </div> */}
               <div className="w-full">{checkoutPage}</div>
             </div>
           </div>

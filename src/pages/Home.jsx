@@ -6,11 +6,52 @@ import { PiDress } from "react-icons/pi";
 import { IoIosArrowForward } from "react-icons/io";
 import { categoryMenu } from "../assets/data/categories";
 import Categories from "../components/Categories";
+import Slider from "react-slick";
 
 const Home = () => {
   const {
     state: { products },
   } = useProducts();
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 2000,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    nextArrow: <div>
+      <p>Next</p>
+    </div>,
+    prevArrow: <div>
+      <p>Prev</p>
+    </div>,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <div className="w-full flex flex-col items-center bg-stone-100 mt-[60px]">
@@ -87,17 +128,90 @@ const Home = () => {
         <Categories />
       </div>
 
-      <div className="w-[80%] mt-6">
+      {/* beauty products slider */}
+      <div className="w-full p-2 md:w-[90%] lg:w-[80%]">
+        <p className="w-full self-start text-3xl font-normal tracking-wide">Beauty Products</p>
+        <Slider {...settings} className="rounded-2xl">
+          {products &&
+            products
+              .filter((pd) => pd.category === "beauty")
+              .map((pd) => (
+                <div className="h-full p-2 py-6 rounded-lg">
+                  <ProductCard key={pd.product_id} product={pd} />
+                </div>
+              ))}
+        </Slider>
+      </div>
+
+      {/* clothing products slider */}
+      <div className="w-full p-2 md:w-[90%] lg:w-[80%]">
+        <p className="w-full self-start text-3xl font-normal tracking-wide">Clothing Products</p>
+        <Slider {...settings} className="rounded-2xl">
+          {products &&
+            products
+              .filter((pd) => pd.category === "clothing")
+              .map((pd) => (
+                <div className="h-full p-2 py-6 rounded-lg">
+                  <ProductCard key={pd.product_id} product={pd} />
+                </div>
+              ))}
+        </Slider>
+      </div>
+
+      {/* food products slider */}
+      <div className="w-full p-2 md:w-[90%] lg:w-[80%]">
+        <p className="w-full self-start text-3xl font-normal tracking-wide">Food Products</p>
+        <Slider {...settings} className="rounded-2xl">
+          {products &&
+            products
+              .filter((pd) => pd.category === "food")
+              .map((pd) => (
+                <div className="h-full p-2 py-6 rounded-lg">
+                  <ProductCard key={pd.product_id} product={pd} />
+                </div>
+              ))}
+        </Slider>
+      </div>
+      {/* Health products slider */}
+      <div className="w-full p-2 md:w-[90%] lg:w-[80%]">
+        <p className="w-full self-start text-3xl font-normal tracking-wide">Health Products</p>
+        <Slider {...settings} className="rounded-2xl">
+          {products &&
+            products
+              .filter((pd) => pd.category === "health")
+              .map((pd) => (
+                <div className="h-full p-2 py-6 rounded-lg">
+                  <ProductCard key={pd.product_id} product={pd} />
+                </div>
+              ))}
+        </Slider>
+      </div>
+      {/* Automotive products slider */}
+      <div className="w-full p-2 md:w-[90%] lg:w-[80%]">
+        <p className="w-full self-start text-3xl font-normal tracking-wide">Automotive Products</p>
+        <Slider {...settings} className="rounded-2xl">
+          {products &&
+            products
+              .filter((pd) => pd.category === "automotive")
+              .map((pd) => (
+                <div className="h-full p-2 py-6 rounded-lg">
+                  <ProductCard key={pd.product_id} product={pd} />
+                </div>
+              ))}
+        </Slider>
+      </div>
+
+      {/* <div className="w-[80%] mt-6">
         <p className="w-full self-start text-3xl font-normal tracking-wide mb-6">
           All Products:
         </p>
-        <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {products &&
             products.map((pd) => (
               <ProductCard key={pd.product_id} product={pd} />
             ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

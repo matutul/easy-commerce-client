@@ -38,11 +38,11 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className={`w-full rounded-2xl ${
+      className={`w-full h-full rounded-2xl ${
         isAddedToCart
           ? "bg-gradient-to-br from-rose-500 to-fuchsia-500 text-white"
           : "bg-white"
-      } drop-shadow-2xl group`}
+      } drop-shadow-xl group`}
     >
       {/* image div */}
       <div className="w-full h-[160px] rounded-t-2xl bg-slate-500 overflow-hidden">

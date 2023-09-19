@@ -1,9 +1,8 @@
-import footerImage from "../assets/image/footerImage/footer2.svg";
 
 const Footer = () => {
   return (
-    <div className="w-full bg-gray-400 pt-11 mt-9 text-white">
-      <div className="w-full bg-gray-700 p-5">
+    <div className="w-full bg-gray-600 pt-2 text-white border-t-8 border-rose-400">
+      <div className="w-full bg-gray-800 p-5">
         <div className="grid grid-cols-1 sm:grid-cols-12">
           <div className="sm:col-span-6 md:col-span-4 w-full">
             <p className="text-xl cursor-default text-gray-300">
@@ -62,7 +61,7 @@ const Footer = () => {
             <p className="text-sm my-1 font-extralight cursor-default text-gray-300">
               Responsibility
             </p>
-            <p className="text-xl cursor-default text-gray-300 mt-4"> FEEDBACK</p>
+            <p className="text-xl cursor-default text-gray-300 mt-4">FEEDBACK</p>
             <p className="text-sm my-1 font-extralight cursor-default text-gray-300">
               Leave a feedback
             </p>

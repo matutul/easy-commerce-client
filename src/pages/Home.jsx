@@ -7,6 +7,8 @@ import { IoIosArrowForward } from "react-icons/io";
 import { categoryMenu } from "../assets/data/categories";
 import Categories from "../components/Categories";
 import Slider from "react-slick";
+import HeroSection from "../components/HeroSection";
+import { heroSectionData } from "../assets/data/heroSectionData";
 
 const Home = () => {
   const {
@@ -20,20 +22,16 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 5000,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     initialSlide: 0,
-    nextArrow: <div>
-      <p>Next</p>
-    </div>,
-    prevArrow: <div>
-      <p>Prev</p>
-    </div>,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
         },
       },
       {
@@ -50,11 +48,24 @@ const Home = () => {
           slidesToScroll: 1,
         },
       },
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
     ],
+  };
+  const settingsHero = {
+    dots: false,
+    infinite: true,
+    speed: 2000,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
   };
 
   return (
-    <div className="w-full flex flex-col items-center bg-stone-100 mt-[60px]">
+    <div className="w-full flex flex-col items-center bg-stone-100 mt-[60px] pb-20">
       {/* Hero section */}
       <div className="w-full p-2 md:p-6 h-fit flex justify-center gap-6">
         {/* Side category menu bar */}
@@ -81,42 +92,14 @@ const Home = () => {
             </div>
           ))}
         </div>
-        <div className="relative w-full lg:w-[calc(100%-280px)] h-full bg-orange-200 p-4 md:p-10 rounded-xl grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="relative w-full lg:w-[calc(100%-280px)] h-full">
           {/* Hero text section */}
-          {/* Hero image on mobile screen*/}
-          <div className="md:hidden float-right flex justify-center md:justify-end items-end">
-            <img
-              src={heroImage}
-              alt=""
-              className="sm:-mr-6 w-full h-auto max-w-[300px] md:max-w-[400px] object-contain"
-            />
-          </div>
-          <div className="w-full h-auto flex flex-col items-start justify-center mr-12">
-            <p className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-rose-500">
-              Easy Commerce
-            </p>
-            <p className="text-lg sm:text-xl md:text-2xl my-2 text-rose-400">
-              Great Deal with Quality Product
-            </p>
-            <p className="text-sm my-2 text-gray-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-              ratione itaque dolore facilis fugit sequi cupiditate, dolor
-              debitis voluptas incidunt est molestias ex eum repellendus
-              perferendis eveniet minus minima accusamus?
-            </p>
-            <button className="bg-gradient-to-r from-rose-500 to-violet-500 py-2 px-5 mt-8 rounded-md text-white hover:from-violet-600 hover:to-rose-600 flex items-center gap-3 group">
-              Order Now{" "}
-              <BsCartPlus className="text-xl group-hover:translate-x-1 transition-all duration-200" />
-            </button>
-          </div>
-          {/* Hero image */}
-          <div className="hidden md:block float-right flex justify-center md:justify-end items-end">
-            <img
-              src={heroImage}
-              alt=""
-              className="sm:-mr-6 w-full h-auto max-w-[300px] md:max-w-[400px] object-contain"
-            />
-          </div>
+          <Slider {...settingsHero} className="rounded-2xl h-full">
+            {heroSectionData &&
+              heroSectionData.map((pd) => (
+                <HeroSection className="w-full h-full border-2 border-red-300" key={pd.id} hero={pd} />
+              ))}
+          </Slider>
         </div>
       </div>
 
@@ -130,7 +113,9 @@ const Home = () => {
 
       {/* beauty products slider */}
       <div className="w-full p-2 md:w-[90%] lg:w-[80%]">
-        <p className="w-full self-start text-3xl font-normal tracking-wide">Beauty Products</p>
+        <p className="w-full self-start text-3xl font-normal tracking-wide">
+          Beauty Products
+        </p>
         <Slider {...settings} className="rounded-2xl">
           {products &&
             products
@@ -145,7 +130,9 @@ const Home = () => {
 
       {/* clothing products slider */}
       <div className="w-full p-2 md:w-[90%] lg:w-[80%]">
-        <p className="w-full self-start text-3xl font-normal tracking-wide">Clothing Products</p>
+        <p className="w-full self-start text-3xl font-normal tracking-wide">
+          Clothing Products
+        </p>
         <Slider {...settings} className="rounded-2xl">
           {products &&
             products
@@ -160,7 +147,9 @@ const Home = () => {
 
       {/* food products slider */}
       <div className="w-full p-2 md:w-[90%] lg:w-[80%]">
-        <p className="w-full self-start text-3xl font-normal tracking-wide">Food Products</p>
+        <p className="w-full self-start text-3xl font-normal tracking-wide">
+          Food Products
+        </p>
         <Slider {...settings} className="rounded-2xl">
           {products &&
             products
@@ -174,7 +163,9 @@ const Home = () => {
       </div>
       {/* Health products slider */}
       <div className="w-full p-2 md:w-[90%] lg:w-[80%]">
-        <p className="w-full self-start text-3xl font-normal tracking-wide">Health Products</p>
+        <p className="w-full self-start text-3xl font-normal tracking-wide">
+          Health Products
+        </p>
         <Slider {...settings} className="rounded-2xl">
           {products &&
             products
@@ -188,7 +179,9 @@ const Home = () => {
       </div>
       {/* Automotive products slider */}
       <div className="w-full p-2 md:w-[90%] lg:w-[80%]">
-        <p className="w-full self-start text-3xl font-normal tracking-wide">Automotive Products</p>
+        <p className="w-full self-start text-3xl font-normal tracking-wide">
+          Automotive Products
+        </p>
         <Slider {...settings} className="rounded-2xl">
           {products &&
             products

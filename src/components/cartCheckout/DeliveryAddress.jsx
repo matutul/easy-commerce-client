@@ -1,9 +1,13 @@
 import { useForm } from "react-hook-form";
+import TotalPrice from "./TotalPrice";
+import PaymentOption from "./PaymentOption";
 
-const DeliveryAddress = () => {
+const DeliveryAddress = ({ handleCheckoutPage }) => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    handleCheckoutPage(
+      <PaymentOption handleCheckoutPage={handleCheckoutPage} />
+    );
   };
   return (
     <div className="w-full">
@@ -11,6 +15,7 @@ const DeliveryAddress = () => {
         className="w-full bg-gray-600 p-4 flex flex-col gap-1 rounded-lg"
         onSubmit={handleSubmit(onSubmit)}
       >
+        <p className="text-2xl tracking-wide text-white self-center">Shipping Address</p>
         <div>
           <label className="m-0 text-gray-200" htmlFor="firstName">
             First name
@@ -110,11 +115,29 @@ const DeliveryAddress = () => {
             {...register("zip", { required: true })}
           />
         </div>
-        <div>
+        {/* <div>
           <input
             className="bg-amber-400 rounded-md p-1 px-2 mt-4 font-medium text-gray-700 outline-none focus:drop-shadow-md   focus:border-2 focus:border-b-gray-100"
             type="submit"
           />
+        </div> */}
+        <div className="w-full flex justify-center">
+          <button
+            className="bg-gray-800 rounded-l-md p-1 px-2 mt-4 font-medium text-gray-200 outline-none hover:drop-shadow-lg"
+            onClick={() =>
+              handleCheckoutPage(
+                <TotalPrice handleCheckoutPage={handleCheckoutPage} />
+              )
+            }
+          >
+            Go back
+          </button>
+          <button
+            className="bg-amber-400 rounded-r-md p-1 px-5 mt-4 font-medium text-gray-700 outline-none hover:drop-shadow-lg"
+            type="submit"
+          >
+            Next
+          </button>
         </div>
       </form>
     </div>

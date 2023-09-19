@@ -8,7 +8,7 @@ const ProductAtCart = ({ product, order_quantity }) => {
   const { dispatch } = useProducts();
   return (
     <>
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center drop-shadow-md">
         <div className="relative w-full flex justify-between items-center rounded-2xl bg-slate-200 overflow-hidden">
           <div className="w-full md:w-[calc(100%-55px)] p-3 flex flex-col md:flex-row items-center">
             <div className="w-full md:w-[40%] flex items-center">

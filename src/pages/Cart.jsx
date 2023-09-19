@@ -1,5 +1,5 @@
 // import ProductCard from "../components/ProductCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductAtCart from "../components/ProductAtCart";
 import { useProducts } from "../context/product/Poduct";
 import DeliveryAddress from "../components/cartCheckout/DeliveryAddress";
@@ -8,7 +8,12 @@ import { Link } from "react-router-dom";
 import TotalPrice from "../components/cartCheckout/TotalPrice";
 
 const Cart = () => {
-  const [checkoutPage, setCheckoutPage] = useState(<TotalPrice />);
+  const [checkoutPage, setCheckoutPage] = useState();
+
+  useEffect(()=>{
+    setCheckoutPage(<TotalPrice handleCheckoutPage = {setCheckoutPage} />)
+
+  }, [])
 
   const {
     state: { cart },

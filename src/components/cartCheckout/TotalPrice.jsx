@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useProducts } from "../../context/product/Poduct";
+import DeliveryAddress from "./DeliveryAddress";
 
-const TotalPrice = () => {
+const TotalPrice = ({ handleCheckoutPage }) => {
   const [priceInfo, setPriceInfo] = useState({
     subTotal: 0,
     vat: 0,
@@ -26,7 +27,7 @@ const TotalPrice = () => {
     });
   }, [cart]);
   return (
-    <div className="w-full rounded-2xl bg-gray-200 flex flex-col justify-center items-center">
+    <div className="w-full rounded-2xl bg-gray-200 shadow-lg flex flex-col justify-center items-center pb-5">
       <p className="text-2xl text-center p-5">
         Calculated price for added product
       </p>
@@ -49,6 +50,18 @@ const TotalPrice = () => {
           <p>Total</p>
           <p>{priceInfo.total.toFixed(2)}</p>
         </div>
+      </div>
+      <div className="w-full flex justify-start ml-10">
+        <button
+        className="bg-amber-400 rounded-md p-1 px-5 mt-4 font-medium text-gray-700 outline-none hover:drop-shadow-lg "
+          onClick={() =>
+            handleCheckoutPage(
+              <DeliveryAddress handleCheckoutPage={handleCheckoutPage} />
+            )
+          }
+        >
+          Next
+        </button>
       </div>
     </div>
   );

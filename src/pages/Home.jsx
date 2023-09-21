@@ -104,8 +104,8 @@ const Home = () => {
       </div>
 
       {/* categories items container */}
-      <div className="w-full lg:w-[70%] p-2 lg:p-0 flex flex-col justify-center items-center my-10">
-        <p className="w-full self-start text-3xl font-normal tracking-wide mb-6">
+      <div className="w-full lg:w-[80%] p-2 lg:p-0 flex flex-col justify-center items-center my-10 ">
+        <p className="w-full text-center text-xl font-normal tracking-wide mb-2">
           Featured Categories:
         </p>
         <Categories />

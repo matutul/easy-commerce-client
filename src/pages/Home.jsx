@@ -1,14 +1,11 @@
 import ProductCard from "../components/ProductCard";
 import { useProducts } from "../context/product/Poduct";
-import heroImage from "../assets/image/heroImage/heroImage2.png";
-import { BsCartPlus } from "react-icons/bs";
 import { PiDress } from "react-icons/pi";
 import { IoIosArrowForward } from "react-icons/io";
 import { categoryMenu } from "../assets/data/categories";
 import Categories from "../components/Categories";
 import Slider from "react-slick";
 import HeroSection from "../components/HeroSection";
-import { heroSectionData } from "../assets/data/heroSectionData";
 
 const Home = () => {
   const {
@@ -48,58 +45,29 @@ const Home = () => {
           slidesToScroll: 1,
         },
       },
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
     ],
-  };
-  const settingsHero = {
-    dots: false,
-    infinite: true,
-    speed: 2000,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    initialSlide: 0,
   };
 
   return (
     <div className="w-full flex flex-col items-center bg-stone-100 mt-[60px] pb-20">
       {/* Hero section */}
-      <div className="w-full p-2 md:p-6 h-fit flex justify-center gap-6">
+      <div className="w-full h-[500px] p-2 md:p-6 flex justify-center gap-6">
         {/* Side category menu bar */}
-        <div className="hidden lg:block relative w-[280px] py-2 bg-white drop-shadow-lg rounded-xl z-20">
+        <div className="hidden lg:block w-[280px] h-full overflow-y-auto py-2 bg-white drop-shadow-lg rounded-xl z-20">
           {categoryMenu.map((category) => (
-            <div className="w-full flex items-center gap-2 py-1 px-3 text-sm hover:bg-gray-100 group">
+            <div className="relative w-full flex items-center gap-2 py-1 px-3 text-sm hover:bg-gray-100 group">
               <div className="h-[25px] w-[25px] rounded-full bg-gray-200 flex justify-center items-center">
                 <PiDress className="text-gray-600" />
               </div>
               {category.category}
               <IoIosArrowForward className="absolute opacity-0 group-hover:opacity-100 right-4 group-hover:right-2 transition-all duration-150" />
-
-              {/* <div className="opacity-0 group-hover:opacity-100 absolute top-0 left-full ml-6 w-[280px] h-full py-2 bg-white drop-shadow-lg rounded-xl ">
-                {category.subcategory.map((subcategory) => (
-                  <button className="w-full relative flex items-center gap-2 py-1 px-3 text-sm hover:bg-gray-100">
-                    <div className="h-[25px] w-[25px] rounded-full bg-gray-200 flex justify-center items-center">
-                      <PiDress className="text-gray-600" />
-                    </div>
-                    <p>{subcategory.subcategoryName}</p>
-                    <IoIosArrowForward className="absolute opacity-0 group-hover:opacity-100 right-4 group-hover:right-2 transition-all duration-150" />
-                  </button>
-                ))}
-              </div> */}
             </div>
           ))}
         </div>
-        <div className="relative w-full lg:w-[calc(100%-280px)] h-full">
+        {/* Hero banner section */}
+        <div className="w-full lg:w-[calc(100%-280px)] lg:h-full">
           {/* Hero text section */}
-          <Slider {...settingsHero} className="rounded-2xl h-full">
-            {heroSectionData &&
-              heroSectionData.map((pd) => (
-                <HeroSection className="w-full h-full border-2 border-red-300" key={pd.id} hero={pd} />
-              ))}
-          </Slider>
+          <HeroSection />
         </div>
       </div>
 

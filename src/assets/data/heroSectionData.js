@@ -15,10 +15,10 @@ export const heroSectionData = [
     },
     {
       id: 2,
-      bgColor: "bg-yellow-200",
-      title: "Easy Commerce",
-      subtitle: "Great Deal with Quality Product",
-      description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ratione
+      bgColor: "bg-amber-200",
+      title: "Big Sale!",
+      subtitle: "Hurry your shop at discount prices",
+      description: `Sunt ratione
       itaque dolore facilis fugit sequi cupiditate, dolor debitis voluptas
       incidunt est molestias ex eum repellendus perferendis eveniet minus
       minima accusamus?`,

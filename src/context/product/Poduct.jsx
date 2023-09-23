@@ -7,11 +7,6 @@ const ProductContext = createContext();
 const Poduct = ({ children }) => {
   const [state, dispatch] = useReducer(Reducer, InitialState);
 
-  // let value = {
-  //   products: productData,
-  //   cart: [],
-  //   error: false,
-  // };
   let value = {
     state,
     dispatch,

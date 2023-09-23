@@ -6,6 +6,7 @@ import { categoryMenu } from "../assets/data/categories";
 import Categories from "../components/Categories";
 import Slider from "react-slick";
 import HeroSection from "../components/HeroSection";
+import ProductCard2 from "../components/ProductCard2";
 
 const Home = () => {
   const {
@@ -18,14 +19,14 @@ const Home = () => {
     speed: 2000,
     autoplay: true,
     autoplaySpeed: 5000,
-    slidesToShow: 4,
-    slidesToScroll: 2,
+    slidesToShow: 5,
+    slidesToScroll: 3,
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 2,
           infinite: true,
           dots: true,
@@ -34,14 +35,14 @@ const Home = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -72,7 +73,7 @@ const Home = () => {
       </div>
 
       {/* categories items container */}
-      <div className="w-full lg:w-[80%] p-2 lg:p-0 flex flex-col justify-center items-center my-10 ">
+      <div className="w-full lg:w-[80%] p-2 lg:p-0 flex flex-col justify-center items-center mb-10 ">
         <p className="w-full text-center text-xl font-normal tracking-wide mb-2">
           Featured Categories:
         </p>
@@ -90,7 +91,7 @@ const Home = () => {
               .filter((pd) => pd.category === "beauty")
               .map((pd) => (
                 <div className="h-full p-2 py-6 rounded-lg">
-                  <ProductCard key={pd.product_id} product={pd} />
+                  <ProductCard2 key={pd.product_id} product={pd} />
                 </div>
               ))}
         </Slider>

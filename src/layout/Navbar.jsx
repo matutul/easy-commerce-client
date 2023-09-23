@@ -9,7 +9,6 @@ const Navbar = () => {
   const {
     state: { cart },
   } = useProducts();
-  console.log(cart);
   return (
     <div className="w-full flex justify-center bg-rose-500 fixed top-0 z-30 px-2 sm:px-4 md:px-6">
       <div className="flex w-full h-[60px] justify-end items-center">

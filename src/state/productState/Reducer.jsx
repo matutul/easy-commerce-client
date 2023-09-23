@@ -6,6 +6,7 @@ export const InitialState = {
   cart: [],
   wishList: [],
   error: false,
+  payInfo: {},
 };
 
 export const Reducer = (state, action) => {
@@ -16,7 +17,7 @@ export const Reducer = (state, action) => {
         ...state,
         cart: [...state.cart, { product: action.payload, order_quantity: 1 }],
       };
-      // remove from cart action
+    // remove from cart action
     case ActionType.REMOVE_FROM_CART: {
       const updatedCart = state.cart.filter((order) => {
         return order.product.product_id !== action.payload;
@@ -74,6 +75,9 @@ export const Reducer = (state, action) => {
         cart: [...updatedCart],
       };
     }
+    // Payment info add to state
+    case ActionType.ADD_SHIPMENT_ADDRESS:
+      return { ...state, payInfo: action.payload };
     default:
       return state;
   }

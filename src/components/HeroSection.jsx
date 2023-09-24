@@ -9,8 +9,7 @@ const HeroSection = () => {
     const interval = setInterval(() => {
       if (index < heroSectionData.length - 1) {
         setIndex(index + 1);
-      }
-      else{
+      } else {
         setIndex(0);
       }
     }, 8000);
@@ -22,14 +21,14 @@ const HeroSection = () => {
   // console.log(index);
   return (
     <div
-      className={`w-full h-full ${heroSectionData[index].bgColor} p-4 md:p-10 rounded-xl flex justify-center items-center gap-6 transition-all duration-500`}
+      className={`w-full h-full ${heroSectionData[index].bgColor} p-2 md:p-10 rounded-xl flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 transition-all duration-500 shadow-md`}
     >
       {/* Hero image on mobile screen*/}
-      <div className="md:hidden float-right flex-1 justify-center md:justify-end items-end">
+      <div className="md:hidden w-full flex flex-1 justify-center">
         <img
           src={heroSectionData[index].image}
           alt=""
-          className="sm:-mr-6 w-full h-auto max-w-[300px] md:max-w-[400px] object-contain"
+          className="sm:-mr-6 w-auto max-h-[200px] object-contain"
         />
       </div>
       <div className="w-full md:w-[60%] flex flex-1 flex-col items-start justify-center">
@@ -48,8 +47,12 @@ const HeroSection = () => {
         </button>
       </div>
       {/* Hero image */}
-      <div className="w-full h-full object-cover md:w-[40%] hidden md:flex flex-2 float-right justify-center md:justify-end items-end">
-        <img src={heroSectionData[index].image} alt="" className="h-full"/>
+      <div className="w-full h-full md:w-[40%] hidden md:flex flex-2 float-right justify-center md:justify-end items-end">
+        <img
+          src={heroSectionData[index].image}
+          alt=""
+          className="object-contain"
+        />
       </div>
     </div>
   );
